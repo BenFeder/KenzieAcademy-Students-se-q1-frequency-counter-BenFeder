@@ -1,14 +1,14 @@
 // Your Code here
 
-document.getElementById("countButton").onclick = function () {
+function countLettersAndWords() {
   // your code will go here ...
 
   let typedText = document.getElementById("textInput").value;
   typedText = typedText.toLowerCase();
 
   function countWords(typedText) {
-    let words = typedText.replace(".!?:;", "");
-    words = words.split(" ");
+    typedText = typedText.replace(/[^a-z'\s]+/g, "");
+    words = typedText.split(" ");
     let wordCounts = {};
 
     for (let i = 0; i < words.length; i++) {
@@ -26,8 +26,8 @@ document.getElementById("countButton").onclick = function () {
       const textContentWords = document.createTextNode(
         '"' + word + '": ' + wordCounts[word] + ", "
       );
-      spanWords.appendChild(textContentWords);
-      document.getElementById("wordsDiv").appendChild(spanWords);
+      spanWords.append(textContentWords);
+      document.getElementById("wordsDiv").append(spanWords);
     }
   }
 
@@ -49,8 +49,13 @@ document.getElementById("countButton").onclick = function () {
       const textContent = document.createTextNode(
         '"' + letter + '": ' + letterCounts[letter] + ", "
       );
-      span.appendChild(textContent);
-      document.getElementById("lettersDiv").appendChild(span);
+      span.append(textContent);
+      document.getElementById("lettersDiv").append(span);
     }
   }
-};
+
+  event.preventDefault();
+}
+
+countLettersAndWordsButton = document.getElementById("countButton");
+countLettersAndWordsButton.addEventListener = ("click", countLettersAndWords);
