@@ -6,9 +6,9 @@ function countLettersAndWords() {
   let typedText = document.getElementById("textInput").value;
   typedText = typedText.toLowerCase();
 
-  function countWords(typedText) {
-    typedText = typedText.replace(/[^a-z'\s]+/g, "");
-    words = typedText.split(" ");
+  function countWords(text) {
+    text = text.replace(/[^a-z'\s]+/g, "");
+    let words = text.split(" ");
     let wordCounts = {};
 
     for (let i = 0; i < words.length; i++) {
@@ -31,7 +31,7 @@ function countLettersAndWords() {
     }
   }
 
-  function countLetters(typedText) {
+  function countLetters(text) {
     let letterCounts = {};
 
     for (let i = 0; i < typedText.length; i++) {
@@ -53,6 +53,10 @@ function countLettersAndWords() {
       document.getElementById("lettersDiv").append(span);
     }
   }
+
+  //run functions
+  countWords(typedText);
+  countLetters(typedText);
 
   event.preventDefault();
 }
